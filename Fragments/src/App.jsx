@@ -1,26 +1,18 @@
 import { useState } from 'react'
 
 import './App.css'
+import FoodItems from './components/FoodItems'
+import ErrorMessage from './components/ErrorMessage';
 
 function App() {
   // let foodItems=[];
   let foodItems=['Dal','Green Vegis','Milk','Roti','Salad','Ghee'];
-  
-
-  
-
   return (
     <>
     <div>Healthy Food</div>
-    {foodItems.length ===0 && 'I am still hungry' }
-    <ul className="list-group">
-    {foodItems.map((item) =>(
-      <li key={item} className="list-group-item">{item}</li>
-      ))}
-  
-  
-</ul>
-</>
+    <ErrorMessage items={foodItems} />
+    <FoodItems items={foodItems} />
+  </>
   )
 }
 
