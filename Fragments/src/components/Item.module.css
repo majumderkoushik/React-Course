@@ -3,9 +3,8 @@
 }
 .kg-span {
     font-weight: 500;
-    color: orange;
+    color: orangered;
 }
-.food-heading {
- text-align: center;
-    color: brown;
+.button {
+    float: right;
 }
