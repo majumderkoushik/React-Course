@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Todoitem({todoName,todoDate}) {
+function Todoitem({todoName,todoDate,onDeleteClick}) {
     
   return (
     <div className="container">
@@ -12,7 +12,8 @@ function Todoitem({todoName,todoDate}) {
    {todoDate}
     </div>
     <div className="col-2">
-    <button type="button" class="btn btn-danger kg-button">Delete</button>
+    <button type="button" class="btn btn-danger kg-button"
+    onClick={() => onDeleteClick(todoName)}>Delete</button>
     </div>
   </div>
   </div>
