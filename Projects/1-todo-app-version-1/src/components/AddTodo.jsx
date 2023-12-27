@@ -1,24 +1,31 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { useContext } from "react"
+import { TodoItemsContext } from "../store/todo-items-store"
 
-function AddTodo({onNewItem}) {
+function AddTodo() {
+  const {addNewItem} = useContext(TodoItemsContext);
   const [todoName, setTodoName] = useState();
   const [dueDate, setDueDate] = useState();
+  const noOfUpdates= useRef(0);
 
 const handleNameChange =(event) => {
  setTodoName(event.target.value);
+ noOfUpdates.current +=1;
+ 
 }
 const handleDateChange =(event) => {
  setDueDate(event.target.value);
 }
 
-const handleAddButtonClicked = () => {
-onNewItem(todoName,dueDate);
+const handleAddButtonClicked = (event) => {
+  event.preventDefault();
+addNewItem(todoName,dueDate);
 setDueDate("");
 setTodoName("");
 }
   return (
     <div class="container text-center">
-    <div class="row kg-row">
+    <form class="row kg-row" onSubmit={handleAddButtonClicked}>
       <div class="col-6">
         <input type='text'
          placeholder='Enter Todo Here'
@@ -32,10 +39,10 @@ setTodoName("");
          onChange={handleDateChange} />
       </div>
       <div class="col-2">
-      <button type="button" class="btn btn-success kg-button"
-      onClick={handleAddButtonClicked}>Add</button>
+      <button  class="btn btn-success kg-button"
+      >Add</button>
       </div>
-    </div>
+    </form>
     </div>
   )
 }
